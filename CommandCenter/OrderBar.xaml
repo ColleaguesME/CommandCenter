@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="CommandCenter.OrderBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommandCenter"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="230">
+    <Grid Background="White">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
+            <Label x:Name="labelName" Content="Heavy cavalry 20000" Padding="0" Margin="6,0"/>
+            <Label x:Name="labelBegin" Content="12/31/2000 10:59:59 AM" Padding="0" Margin="6,0"/>
+            <Label x:Name="labelEnd" Content="12/31/2000 11:59:59 AM" Padding="0" Margin="6,0"/>
+        </StackPanel>
+        <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
+            <Button x:Name="buttonCancel" Click="buttonCancel_Click" Margin="0,0,20,0">
+                <Image Source="images/Cancel.png" Width="18" />
+            </Button>
+        </WrapPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,213 @@
+﻿<UserControl x:Class="CommandCenter.KachTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommandCenter"
+             mc:Ignorable="d" 
+             d:DesignHeight="709" d:DesignWidth="1010">
+    <Grid Background="White">
+        <StackPanel HorizontalAlignment="Left" Margin="0,0,300,0">
+            <WrapPanel Margin="10">
+                <Image x:Name="imageWood" Source="images/Wood.png" Height="26" Margin="2"/>
+                <Label x:Name="labelWood" Content="400000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+                <Image x:Name="imageClay" Source="images/Clay.png" Height="26" Margin="2"/>
+                <Label x:Name="labelClay" Content="400000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+                <Image x:Name="imageIron" Source="images/Iron.png" Height="26" Margin="2"/>
+                <Label x:Name="labelIron" Content="400000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+                <Image x:Name="imageProvisions" Source="images/Provisions.png" Height="26" Margin="2"/>
+                <Label x:Name="labelProvisions" Content="24000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+                <StackPanel Width="50"/>
+                <Image x:Name="imageVirtualWood" Source="images/Wood.png" Height="26" Margin="2"/>
+                <Label x:Name="labelVirtualWood" Content="400000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+                <Image x:Name="imageVirtualClay" Source="images/Clay.png" Height="26" Margin="2"/>
+                <Label x:Name="labelVirtualClay" Content="400000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+                <Image x:Name="imageVirtualIron" Source="images/Iron.png" Height="26" Margin="2"/>
+                <Label x:Name="labelVirtualIron" Content="400000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+                <Image x:Name="imageVirtualProvisions" Source="images/Provisions.png" Height="26" Margin="2"/>
+                <Label x:Name="labelVirtualProvisions" Content="24000" HorizontalAlignment="Center" Margin="0,0,0,0" Padding="2" VerticalAlignment="Center" Width="45"/>
+            </WrapPanel>
+            <WrapPanel Margin="10">
+                <Button x:Name="buttonRefresh" Click="buttonRefresh_Click" Content="Refresh" Margin="3"/>
+                <Button x:Name="buttonTakeSmallReward" Click="buttonTakeSmallReward_Click" Content="Take Small Reward" Margin="3"/>
+            </WrapPanel>
+            <WrapPanel Margin="10">
+                <StackPanel Height="105">
+                    <Label x:Name="labelHeadquarters" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="2" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageHeadquarters" Source="images/Headquarter.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonHeadquarters" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelTimberCamp" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageTimberCamp" Source="images/TimberCamp.png" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonTimberCamp" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelClayPit" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageClayPit" Source="images/ClayPit.png" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonClayPit" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelIronMine" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageIronMine" Source="images/IronMine.png" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonIronMine" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelFarm" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="1" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageFarm" Source="images/Farm.png" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonFarm" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelWarehouse" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="1" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageWarehouse" Source="images/Warehouse.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonWarehouse" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelChurch" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="1" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageChurch" Source="images/Church.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonChurch" Click="Upgrade" Content="Upgrade" IsEnabled="False" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelRallyPoint" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageRallyPoint" Source="images/Rally_point.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonRallyPoint" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelBarracks" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageBarracks" Source="images/Barrack.png" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonBarracks" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelStatue" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageStatue" Source="images/Statue.png" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonStatue" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelWall" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageWall" Source="images/Wall.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonWall" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelHospital" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageHospital" Source="images/Hospital.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonHospital" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelMarket" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageMarket" Source="images/Market.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonMarket" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelTavern" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageTavern" Source="images/Tavern.png" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonTavern" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelAcademy" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageAcademy" Source="images/Academy.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonAcademy" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="105">
+                    <Label x:Name="labelHallOfOrders" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageHallOfOrders" Source="images/Halloforders.jpg" Height="60" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonHallOfOrders" Click="Upgrade" Content="Upgrade" Margin="3,0,3,3"/>
+                </StackPanel>
+            </WrapPanel>
+            <WrapPanel Margin="10">
+                <StackPanel Height="125">
+                    <Label x:Name="labelSpearman" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageSpearman" Source="images/Spearman.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxSpearman" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonSpearman" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelSwordsman" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageSwordsman" Source="images/Swordsman.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxSwordsman" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonSwordsman" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelArcher" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageArcher" Source="images/Archer.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxArcher" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonArcher" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelHeavyCavalry" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageHeavyCavalry" Source="images/Heavy_cavalry.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxHeavyCavalry" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonHeavyCavalry" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelAxeFighter" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageAxeFighter" Source="images/Axe_fighter.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxAxeFighter" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonAxeFighter" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelLightCavalry" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageLightCavalry" Source="images/Light_cavalry.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxLightCavalry" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonLightCavalry" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelMountedArcher" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageMountedArcher" Source="images/Mounted_archer.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxMountedArcher" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonMountedArcher" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelRam" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageRam" Source="images/Ram.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxRam" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonRam" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125">
+                    <Label x:Name="labelCatapult" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imageCatapult" Source="images/Catapult.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxCalatpult" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonCatapult" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+                <StackPanel Height="125" IsEnabled="False">
+                    <Label x:Name="labelPaladin" BorderBrush="Black" BorderThickness="1" FontWeight="Bold" Content="0" HorizontalContentAlignment="Center" Margin="3,3,3,0" Padding="0" Width="60"/>
+                    <Image x:Name="imagePaladin" Source="images/Paladin.png" Height="60" Margin="3,0,3,0"/>
+                    <TextBox x:Name="textBoxPaladin" Text="0" HorizontalContentAlignment="Center" Margin="3,0,3,0"/>
+                    <Button x:Name="buttonPaladin" Click="Recruit" Content="Recruit" Margin="3,0,3,3"/>
+                </StackPanel>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="TODO Spies"/>
+            </WrapPanel>
+            <WrapPanel>
+                <StackPanel Height="120" IsEnabled="False">
+                    <Image x:Name="imageCoins" Source="images/Coins.png" Height="60" Margin="10,10,10,2"/>
+                    <TextBox x:Name="textBoxCoins" Text="0" Margin="10,2,10,2"/>
+                    <Button x:Name="buttonCoins" Content="Mint" Margin="10,2,10,10"/>
+                </StackPanel>
+                <StackPanel Height="120" IsEnabled="False">
+                    <Image x:Name="imageNobleman" Source="images/Nobleman.png" Height="60" Margin="10,10,10,2"/>
+                    <TextBox x:Name="textBoxNobleman" Text="0" Margin="10,2,10,2"/>
+                    <Button x:Name="buttonNobleman" Content="Recruit" Margin="10,2,10,10"/>
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+        <WrapPanel x:Name="wrapQueue" HorizontalAlignment="Right" Margin="20" Width="230">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
+                    <StackPanel x:Name="stackPanelOrders" Width="230" MouseUp="stackPanelOrders_MouseUp">
+                        <Label x:Name="labelOrdersQueue" Content="Orders queue" />
+                        <local:PositionPanel x:Name="zeroPosition"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+            <Button x:Name="buttonRemoveOrders" Content="Cancel Orders" Margin="10" Click="buttonRemoveOrders_Click" Height="25" Width="210"/>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="200">
+                    <StackPanel x:Name="stackPanelQuestRewards" Width="230">
+                        <Label x:Name="labelQuestRewards" Content="Quest rewards list" />
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+        </WrapPanel>
+    </Grid>
+</UserControl>

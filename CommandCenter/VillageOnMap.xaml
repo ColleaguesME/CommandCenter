@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="CommandCenter.VillageOnMap"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommandCenter"
+             mc:Ignorable="d" >
+    <Grid x:Name="grid">
+        <Label x:Name="label" FontFamily="Times New Roman" FontSize="20" HorizontalAlignment="Center" Padding="0" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>

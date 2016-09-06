@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="CommandCenter.AttackBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommandCenter"
+             mc:Ignorable="d" >
+    <StackPanel Height="30" Width="1010" Orientation="Horizontal" Background="White" HorizontalAlignment="Right">
+        <Label x:Name="labelName" Content="1234567890abcdefghjklmnopqrstuvwxyz" Height="18" Padding="2,1" Width="165"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxSpearman" Text="0" Height="18" Width="38"/>
+        <Label x:Name="labelSpearman" Content="100" Height="18" Padding="2,1" Width="36"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxSwordsman" Text="0" Height="18" Width="38"/>
+        <Label x:Name="labelSwordsman" Content="100" Height="18" Padding="2,1" Width="36"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxArcher" Text="24000" Height="18" Width="38"/>
+        <Label x:Name="labelArcher" Content="24000" Height="18" Padding="2,1" Width="36"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxHeavyCavalry" Text="4000" Height="18" Width="31"/>
+        <Label x:Name="labelHeavyCavalry" Content="4000" Height="18" Padding="2,1" Width="30"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxAxeFighter" Text="24000" Height="18" Width="38"/>
+        <Label x:Name="labelAxeFighter" Content="24000" Height="18" Padding="2,1" Width="36"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxLightCavalry" Text="6000" Height="18" Width="31"/>
+        <Label x:Name="labelLightCavalry" Content="6000" Height="18" Padding="2,1" Width="30"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxMountedArcher" Text="4800" Height="18" Width="31"/>
+        <Label x:Name="labelMountedArcher" Content="4800" Height="18" Padding="2,1" Width="30"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxRam" Text="4800" Height="18" Width="31"/>
+        <Label x:Name="labelRam" Content="4800" Height="18" Padding="2,1" Width="30"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxCatapult" Text="3000" Height="18" Width="31"/>
+        <Label x:Name="labelCarapult" Content="3000" Height="18" Padding="2,1" Width="30"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxBerserker" Text="4000" Height="18" Width="31"/>
+        <Label x:Name="labelBerserker" Content="4000" Height="18" Padding="2,1" Width="30"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxTrebushet" Text="2400" Height="18" Width="31"/>
+        <Label x:Name="labelTrebushet" Content="2400" Height="18" Padding="2,1" Width="30"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxNobleman" Text="240" Height="18" Width="25"/>
+        <Label x:Name="labelNobleman" Content="240" Height="18" Padding="2,1" Width="23"/>
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
+        <TextBox x:Name="textBoxPaladin" Text="1" Height="18" Width="13"/>
+        <Label x:Name="labelPaladin" Content="1" Height="18" Padding="2,1" Width="11"/>
+    </StackPanel>
+</UserControl>

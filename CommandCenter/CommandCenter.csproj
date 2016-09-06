@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F026804-A3F9-4863-96C6-0E40C49D55E7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommandCenter</RootNamespace>
+    <AssemblyName>CommandCenter</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity.EF5, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Fabric.Plugin, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AccountInformation.cs" />
+    <Compile Include="AttackBar.xaml.cs">
+      <DependentUpon>AttackBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AttackTab.xaml.cs">
+      <DependentUpon>AttackTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Building.cs" />
+    <Compile Include="Buildings\Academy.cs" />
+    <Compile Include="Buildings\Barracks.cs" />
+    <Compile Include="Buildings\ClayPit.cs" />
+    <Compile Include="Buildings\Farm.cs" />
+    <Compile Include="Buildings\HallOfOrders.cs" />
+    <Compile Include="Buildings\Headquarters.cs" />
+    <Compile Include="Buildings\Hospital.cs" />
+    <Compile Include="Buildings\IronMine.cs" />
+    <Compile Include="Buildings\Market.cs" />
+    <Compile Include="Buildings\RallyPoint.cs" />
+    <Compile Include="Buildings\Statue.cs" />
+    <Compile Include="Buildings\Tavern.cs" />
+    <Compile Include="Buildings\TimberCamp.cs" />
+    <Compile Include="Buildings\Wall.cs" />
+    <Compile Include="Buildings\Warehouse.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="MapMenuFoe.xaml.cs">
+      <DependentUpon>MapMenuFoe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MapMenuMate.xaml.cs">
+      <DependentUpon>MapMenuMate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderBar.xaml.cs">
+      <DependentUpon>OrderBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialBarracksInfo.cs" />
+    <Compile Include="PartialFarmInfo.cs" />
+    <Compile Include="PartialWaitInfo.cs" />
+    <Compile Include="PositionPanel.xaml.cs">
+      <DependentUpon>PositionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuestReward.cs" />
+    <Compile Include="QuestRewardBar.xaml.cs">
+      <DependentUpon>QuestRewardBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.cs" />
+    <Compile Include="Serializer.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="Units\Archer.cs" />
+    <Compile Include="Units\AxeFighter.cs" />
+    <Compile Include="Units\Catapult.cs" />
+    <Compile Include="Units\HeavyCavalry.cs" />
+    <Compile Include="Units\LightCavalry.cs" />
+    <Compile Include="Units\MountedArcher.cs" />
+    <Compile Include="Units\Ram.cs" />
+    <Compile Include="Units\Spearman.cs" />
+    <Compile Include="Units\Swordsman.cs" />
+    <Compile Include="Village.cs" />
+    <Compile Include="VillageOnMap.xaml.cs">
+      <DependentUpon>VillageOnMap.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AttackBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AttackTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KachBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KachTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="KachBar.xaml.cs">
+      <DependentUpon>KachBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KachTab.xaml.cs">
+      <DependentUpon>KachTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MapMenuFoe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MapMenuMate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OrderBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PositionPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuestRewardBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VillageOnMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Headquarter.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Archer.png" />
+    <Resource Include="images\Axe_fighter.png" />
+    <Resource Include="images\Barrack.png" />
+    <Resource Include="images\Catapult.png" />
+    <Resource Include="images\Clay.png" />
+    <Resource Include="images\Claypit.png" />
+    <Resource Include="images\Farm.png" />
+    <Resource Include="images\Heavy_cavalry.png" />
+    <Resource Include="images\Iron.png" />
+    <Resource Include="images\IronMine.png" />
+    <Resource Include="images\Light_cavalry.png" />
+    <Resource Include="images\Mounted_archer.png" />
+    <Resource Include="images\Nobleman.png" />
+    <Resource Include="images\Paladin.png" />
+    <Resource Include="images\Provisions.png" />
+    <Resource Include="images\Ram.png" />
+    <Resource Include="images\Spearman.png" />
+    <Resource Include="images\Swordsman.png" />
+    <Resource Include="images\TimberCamp.png" />
+    <Resource Include="images\Warehouse.jpg" />
+    <Resource Include="images\Wood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Coins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Academy.jpg" />
+    <Resource Include="images\Church.jpg" />
+    <Resource Include="images\Halloforders.jpg" />
+    <Resource Include="images\Hospital.jpg" />
+    <Resource Include="images\Market.jpg" />
+    <Resource Include="images\Rally_point.jpg" />
+    <Resource Include="images\Statue.png" />
+    <Resource Include="images\Tavern.png" />
+    <Resource Include="images\Wall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Ava LTM.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\beautiful image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\TabPanel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\small picture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archer.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axefighter.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barracks.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\catapult.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\claypit.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\farm.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\headquarters.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heavycavalry.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ironmine.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lightcavalry.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mountedarcher.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nsqueue test 1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nsqueue.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ram.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spearman.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\swordsman.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\timbercamp.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wall.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warehouse.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\academy.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chapel.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\church.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\halloforders.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hospital.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\market.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rallypoint.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statue.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tavern.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Village.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="makeConnection.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

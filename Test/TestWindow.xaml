@@ -1,0 +1,21 @@
+﻿<Window x:Class="Test.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test"
+        xmlns:qwe="clr-namespace:CommandCenter;assembly=CommandCenter"
+        mc:Ignorable="d"
+        Title="Test" Height="600" Width="800" Loaded="Window_Loaded">
+    <StackPanel x:Name="panel" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="1.049,1.672">
+        <TextBox x:Name="textBox" Margin="10,0" Width="675" ToolTip="qwe" AutomationProperties.HelpText="qwe"/>
+        <Button x:Name="buttonEnterGame" Content="EnterGame" Margin="10,0" Click="EnterGame" Width="100"/>
+        <Button x:Name="buttonGetInfo" Content="GetInfo" Margin="10,0" Click="GetInfo" Width="100"/>
+        <Image Source="images/A.png" Height="25"/>
+        <Button x:Name="buttonTest" Content="Test" Margin="10,0" Click="Test" Width="100"/>
+        <StackPanel x:Name="panel1"/>
+        <StackPanel x:Name="panel2">
+
+        </StackPanel>
+    </StackPanel>
+</Window>

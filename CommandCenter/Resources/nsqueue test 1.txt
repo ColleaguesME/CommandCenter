@@ -1,0 +1,9 @@
+warehouse 19
+farm 14
+headquarters 13
+timbercamp 25
+claypit 25
+ironmine 25
+barracks 9
+spearman 40
+swordsman 40

@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="CommandCenter.MapMenuFoe"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CommandCenter"
+             mc:Ignorable="d" >
+    <StackPanel Width="100">
+        <Button x:Name="buttonShow" Click="buttonShow_Click" Content="show"/>
+        <Button x:Name="buttonSpy" Click="buttonSpy_Click" Content="spy"/>
+        <Button x:Name="buttonAttack" Click="buttonAttack_Click" Content="attack"/>
+    </StackPanel>
+</UserControl>
