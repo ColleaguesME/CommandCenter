@@ -43,7 +43,7 @@ namespace CommandCenter
             tcpListener.BeginAcceptSocket(EndAcceptSocket, null);
             Process process = new Process();
             process.StartInfo.FileName = "node";
-            process.StartInfo.Arguments = "..\\..\\..\\makeConnection.js " + name + " " + password + " " + myIp + " " + lastUnusedPort.ToString();
+            process.StartInfo.Arguments = "..\\..\\..\\makeConnection.js " + lastUnusedPort.ToString() + "*" + myIp;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.CreateNoWindow = true;
@@ -83,6 +83,7 @@ namespace CommandCenter
                     isClosed = true;
                     socket.Close();
                     tcpListener.Stop();
+                    MessageBox.Show("Closed connection");
                     tcpListener = new TcpListener(IPAddress.Any, oldPort);
                     tcpListener.Start();
                     tcpListener.BeginAcceptSocket(EndAcceptSocket, null);

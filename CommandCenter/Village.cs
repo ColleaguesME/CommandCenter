@@ -56,7 +56,7 @@ namespace CommandCenter
         public void AddSingleOrder(string name, int quantity = 1)
         {
             AddOrder(name, quantity);
-            SendVilalge();
+            SendVillage();
             DisplayOrders();
         }
         public void AddOrdersFromFile(string path)
@@ -89,14 +89,14 @@ namespace CommandCenter
             {
                 orders.AddRange(orders[orders.Count - 1].StringToOrders(toHandle[i]));
             }
-            SendVilalge();
+            SendVillage();
             DisplayOrders();
         }
         public void RemoveAllOrders()
         {
             position = 0;
             orders.RemoveRange(1, orders.Count - 1);
-            SendVilalge();
+            SendVillage();
             DisplayOrders();
         }
         public void RemoveOrder(int toRemove)
@@ -127,17 +127,17 @@ namespace CommandCenter
                 {
                     position--;
                 }
-                SendVilalge();
+                SendVillage();
                 DisplayOrders();
             }
         }
 
-        void SendVilalge()
+        void SendVillage()
         {
 
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Village));
             MemoryStream stream = new MemoryStream();
-            serializer.WriteObject(stream, this);
+            serializer.(stream, this);
             byte[] buffer = stream.ToArray();
             //byte[] buffer = Encoding.UTF8.GetBytes(Serializer.Get().Serialize(this));
             if (!account.isClosed)
@@ -251,7 +251,7 @@ namespace CommandCenter
         public void ClaimReward(int index)
         {
             questRewards.RemoveAt(index);
-            SendVilalge();
+            SendVillage();
             DisplayQuestRewards();
         }
         public void RefreshButtons(int position)
