@@ -21,7 +21,7 @@ namespace CommandCenter
     public partial class OrderBar : UserControl
     {
         Village village;
-        public int postiton;
+        public int index;
         //TOREMOVE
         public OrderBar()
         {
@@ -36,7 +36,7 @@ namespace CommandCenter
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
-            village.RemoveOrder(postiton);
+            village.RemoveOrder(index);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace CommandCenter
             for (int i = 1; i < orders.Count; i++)
             {
                 PositionPanel positionPanel = new PositionPanel();
-                orders[i].bar.postiton = i;
+                orders[i].bar.index = i;
                 orderElements.Add(orders[i].bar);
                 orderElements.Add(positionPanel);
                 positionPanels.Add(positionPanel);

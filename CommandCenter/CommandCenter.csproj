@@ -134,6 +134,7 @@
     <Compile Include="OrderBar.xaml.cs">
       <DependentUpon>OrderBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderChanges.cs" />
     <Compile Include="PartialBarracksInfo.cs" />
     <Compile Include="PartialFarmInfo.cs" />
     <Compile Include="PartialWaitInfo.cs" />

@@ -89,7 +89,8 @@ namespace CommandCenter
             {
                 orders.AddRange(orders[orders.Count - 1].StringToOrders(toHandle[i]));
             }
-            SendVillage();
+            
+            account.socket.Send(new OrderChange(position, "add", orders.GetRange(position, orders.Count - position)).GetBytes());
             DisplayOrders();
         }
         public void RemoveAllOrders()
@@ -127,7 +128,9 @@ namespace CommandCenter
                 {
                     position--;
                 }
-                SendVillage();
+
+                account.socket.Send(new OrderChange(toRemove-1, "cancel", orders.GetRange(toRemove-1, orders.Count - (toRemove - 1))).GetBytes());
+
                 DisplayOrders();
             }
         }
@@ -137,7 +140,7 @@ namespace CommandCenter
 
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Village));
             MemoryStream stream = new MemoryStream();
-            serializer.(stream, this);
+            serializer.WriteObject(stream, this);
             byte[] buffer = stream.ToArray();
             //byte[] buffer = Encoding.UTF8.GetBytes(Serializer.Get().Serialize(this));
             if (!account.isClosed)
