@@ -305,7 +305,7 @@ namespace CommandCenter
         }
         public List<Order> StringToOrders(Order order)
         {
-            Wait(DateTime.UtcNow);
+            Wait(DateTime.UtcNow.AddMilliseconds(300));
             List<Order> orders = new List<Order>();
             order.Update(this);
             if (order.entity as Building != null)
@@ -337,7 +337,12 @@ namespace CommandCenter
                         }
                     }
                 }
-                order.Begin = MaxDate(timerResources.AddSeconds(GetWaitingTime(order.entity.GetResources())), almostLastTimerBuild);
+                int farmIndex = FarmInfosCeilingIndex(timerResources);
+                while (order.farmInfos[farmIndex].limit < order.entity.GetProvisions() + order.provisions)
+                {
+                    farmIndex++;
+                }
+                order.Begin = MaxDate(timerResources.AddSeconds(GetWaitingTime(order.entity.GetResources())), almostLastTimerBuild, farmInfos[farmIndex].time);
                 order.Wait();
                 order.End = MaxDate(order.Begin, order.timerBuild).AddSeconds(order.entity.GetTime());
                 order.Up();
