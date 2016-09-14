@@ -305,7 +305,7 @@ namespace CommandCenter
         }
         public List<Order> StringToOrders(Order order)
         {
-            Wait(DateTime.UtcNow.AddMilliseconds(300));
+            Wait(DateTime.UtcNow.AddMilliseconds(150));
             List<Order> orders = new List<Order>();
             order.Update(this);
             if (order.entity as Building != null)

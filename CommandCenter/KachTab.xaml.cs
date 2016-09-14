@@ -107,7 +107,7 @@ namespace CommandCenter
 
         private void buttonRefresh_Click(object sender, RoutedEventArgs e)
         {
-            byte[] message = Encoding.UTF8.GetBytes("Get Information");
+            byte[] message = Encoding.UTF8.GetBytes("{\"type\": \"refresh\"}");
             Village.account.socket.Send(message);
         }
 
