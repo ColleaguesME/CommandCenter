@@ -22,6 +22,7 @@ namespace CommandCenter
     {
         Village village;
         public int index;
+        static DateTime lastUse = DateTime.MinValue;
         //TOREMOVE
         public OrderBar()
         {
@@ -36,7 +37,11 @@ namespace CommandCenter
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
-            village.RemoveOrder(index);
+            if ((DateTime.Now - lastUse).TotalMilliseconds > 400) {
+                village.RemoveOrder(index);
+                lastUse = DateTime.Now;
+            }              
+            
         }
     }
 }

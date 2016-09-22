@@ -344,7 +344,7 @@ namespace CommandCenter
                 }
                 order.Begin = MaxDate(timerResources.AddSeconds(GetWaitingTime(order.entity.GetResources())), almostLastTimerBuild, farmInfos[farmIndex].time);
                 order.Wait();
-                order.End = MaxDate(order.Begin, order.timerBuild).AddSeconds(order.entity.GetTime());
+                order.End = MaxDate(order.Begin, order.timerBuild).AddSeconds(order.entity.GetTime() - order.headquarters.GetSignificance() + 1);
                 order.Up();
                 orders.Add(order);
             }

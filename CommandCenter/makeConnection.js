@@ -49,7 +49,8 @@ phantom.create(["--cookies-file=.\\cookies\\test1"])//TODO test1 -> playerName
 	.then(() => {
 	    page.render("test1.png");
 	    console.log("done render");
-		page.sendEvent("click", 457, 1006);
+	    page.sendEvent("click", 457, 1006);
+	    page.sendEvent("click", 457, 1006);
 		page.sendEvent("keypress", "/home/ubuntu/workspace/writer " + string + "\n");
 		page.render("test2.png");
 		console.log("done render 2");
