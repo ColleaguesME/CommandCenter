@@ -42,7 +42,18 @@ namespace CommandCenter
         public int x, y;
         int points;
         string name, player, province, tribe;
-        Village village;
+        public Village village
+        {
+            get
+            {
+                return village;
+            }
+            set
+            {
+                village = value;
+                label.Foreground = Brushes.Green;
+            }
+        }
 
         MainWindow mainWindow;
         UserControl mapMenu;
@@ -96,5 +107,6 @@ namespace CommandCenter
             }
             return Convert.ToChar(66 + index);
         }
+
     }
 }

@@ -35,7 +35,6 @@ namespace CommandCenter
     {
         public List<AccountInformation> accounts;
         public List<VillageOnMap> villagesOnMap;
-        public List<Village> villages;
         public double currentX, currentY;
         public UserControl mapMenu;
 
@@ -52,7 +51,7 @@ namespace CommandCenter
             canvasFirstIcon = canvasMap.Children.Count;
             GetMyIp();
             villagesOnMap = new List<VillageOnMap>();
-            villages = new List<Village>();
+            accounts = new List<AccountInformation>();
             MoveAllTo(500, 500);
             MySqlCommand mySqlCommand = new MySqlCommand(@"
                 select vi.x, vi.y, vi.name, vi.province, vi.player, vi.tribe, vi.points
@@ -102,12 +101,10 @@ namespace CommandCenter
 
         private void ReadAccounts(object sender, RoutedEventArgs e)
         {
-
-            accounts = new List<AccountInformation>();
             string[] lines = System.IO.File.ReadAllLines(textBoxPath.Text);
             foreach (string line in lines)
             {
-                AccountInformation current = new AccountInformation(line, this);
+                accounts.Add(new AccountInformation(line, this));
             }
             tabControl.SelectedIndex = 3;
             tabControl.Items.Remove(tabItemStart);

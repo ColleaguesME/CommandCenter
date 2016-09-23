@@ -16,8 +16,16 @@ using System.Windows.Threading;
 
 namespace CommandCenter
 {
+    [DataContract]
     public class AccountInformation
     {
+        [DataMember]
+        public List<Village> villages;
+        [DataMember]
+        public List<QuestReward> questRewards;
+        [DataMember]
+        public int smallRewardQuantity;
+
         static int lastUnusedPort = 8000;
         const string cookiesPath = "";
         public static string myIp;
@@ -27,14 +35,15 @@ namespace CommandCenter
         TcpListener tcpListener;
         public bool isClosed;
         public Socket socket;
-        public MainWindow mainWindow;
+        MainWindow mainWindow;
+
+        public DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AccountInformation));
 
         public AccountInformation(string source, MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             buffer = new byte[65536];
             isClosed = true;
-            this.mainWindow = mainWindow;
-            mainWindow.accounts.Add(this);
             string[] parameters = source.Split(' ');
             name = parameters[0];
             password = parameters[0];
@@ -75,7 +84,6 @@ namespace CommandCenter
         {
             mainWindow.Dispatcher.Invoke(() =>
             {
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Village));
                 int recieved = socket.EndReceive(argument);
                 if (recieved == 0)
                 {
@@ -92,27 +100,67 @@ namespace CommandCenter
                 {
                     string str = Encoding.UTF8.GetString(buffer);
                     MemoryStream stream = new MemoryStream(buffer, 0, recieved);
-                    Village recievedVillage = (Village)serializer.ReadObject(stream);
-                    //Village recievedVillage = Serializer.Get().Deserialize<Village>(str);
-                    bool found = false;
-                    foreach (Village village in mainWindow.villages)
-                    {
-                        if (village.x == recievedVillage.x && village.y == recievedVillage.y)
-                        {
-                            found = true;
-                            village.Update(recievedVillage);
-                        }
-                    }
-                    if (!found)
-                    {
-                        Village village = new Village(recievedVillage, this);
-                        village.Bar.MouseDoubleClick += mainWindow.OpenTab;
-                        (mainWindow.stackPanelKach as IAddChild).AddChild(village.Bar);
-                        mainWindow.villages.Add(village);
-                    }
+                    Update((AccountInformation)serializer.ReadObject(stream));
                     socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, GetVillage, null);
                 }
             });
+        }
+
+        void Update(AccountInformation source)
+        {
+            questRewards = source.questRewards;
+            smallRewardQuantity = source.smallRewardQuantity;
+
+            source.villages.ForEach((recievedVillage) =>
+            {
+                try
+                {
+                    villages.First((village) =>
+                    {
+                        return village.x == recievedVillage.x && village.y == recievedVillage.y;
+                    }).Update(recievedVillage);
+                }
+                catch
+                {
+
+                    Village village = new Village(recievedVillage, this);
+                    village.Bar.MouseDoubleClick += mainWindow.OpenTab;
+                    (mainWindow.stackPanelKach as IAddChild).AddChild(village.Bar);
+                    villages.Add(village);
+                    try
+                    {
+                        mainWindow.villagesOnMap.First((villageOnMap) =>
+                        {
+                            return villageOnMap.x == recievedVillage.x && villageOnMap.y == recievedVillage.y;
+                        }).village = village;
+                    }
+                    catch
+                    {
+                        //db updates once a day so we need to add manualy not found villages
+                    }
+                }
+            });
+
+            
+
+            foreach (Village recievedVillage in source.villages)
+            {
+                bool found = false;
+                foreach (Village village in villages)
+                {
+                    if (village.x == recievedVillage.x && village.y == recievedVillage.y)
+                    {
+                        found = true;
+                        village.Update(recievedVillage);
+                        break;
+                    }
+                }
+                if (!found)
+                {
+
+                    
+                }
+            }
         }
 
         public override string ToString()

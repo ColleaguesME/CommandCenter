@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Json;
 namespace CommandCenter
 {
     [DataContract]
-    class QuestReward
+    public class QuestReward
     {
         public int index;
         public Village village;

@@ -29,10 +29,6 @@ namespace CommandCenter
         [DataMember]
         List<Order> orders;
         [DataMember]
-        List<QuestReward> questRewards;
-        [DataMember]
-        int smallRewardQuantity;
-        [DataMember]
         public int x, y;
 
 
@@ -52,12 +48,6 @@ namespace CommandCenter
             Bar = new KachBar(Tab);
             name = village.name;
             Update(village);
-        }
-        public void AddSingleOrder(string name, int quantity = 1)
-        {
-            AddOrder(name, quantity);
-            SendVillage();
-            DisplayOrders();
         }
         public void AddOrdersFromFile(string path)
         {
@@ -95,9 +85,9 @@ namespace CommandCenter
         }
         public void RemoveAllOrders()
         {
+            //rewrite
             position = 0;
             orders.RemoveRange(1, orders.Count - 1);
-            SendVillage();
             DisplayOrders();
         }
         public void RemoveOrder(int toRemove)
@@ -134,28 +124,13 @@ namespace CommandCenter
                 DisplayOrders();
             }
         }
-
-        void SendVillage()
-        {
-
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Village));
-            MemoryStream stream = new MemoryStream();
-            serializer.WriteObject(stream, this);
-            byte[] buffer = stream.ToArray();
-            //byte[] buffer = Encoding.UTF8.GetBytes(Serializer.Get().Serialize(this));
-            if (!account.isClosed)
-            {
-                account.socket.Send(buffer);
-            }
-        }
         public int GetPossibleQuantity(string name)
         {
             return orders[Position].GetPossibleQuantity(name);
         }
         public void Update(Village toUpdate)
         {
-            smallRewardQuantity = toUpdate.smallRewardQuantity;
-            Tab.buttonTakeSmallReward.IsEnabled = smallRewardQuantity > 0;
+            Tab.buttonTakeSmallReward.IsEnabled = account.smallRewardQuantity > 0;
             
 
 
@@ -234,7 +209,6 @@ namespace CommandCenter
                 position = orders.Count - 1;
             }
             DisplayOrders();
-            questRewards = toUpdate.questRewards;
             DisplayQuestRewards();
         }
         public void DisplayOrders()
@@ -245,16 +219,16 @@ namespace CommandCenter
         public void DisplayQuestRewards()
         {
             Tab.stackPanelQuestRewards.Children.RemoveRange(1, Tab.stackPanelQuestRewards.Children.Count - 1);
-            for (int i = 0; i < (questRewards == null ? 0 : questRewards.Count); i++)
+            for (int i = 0; i < (account.questRewards == null ? 0 : account.questRewards.Count); i++)
             {
-                questRewards[i].InitBar(i, this);
-                Tab.stackPanelQuestRewards.Children.Add(questRewards[i].bar);
+                account.questRewards[i].InitBar(i, this);
+                Tab.stackPanelQuestRewards.Children.Add(account.questRewards[i].bar);
             }
         }
         public void ClaimReward(int index)
         {
-            questRewards.RemoveAt(index);
-            SendVillage();
+            //rewrite
+            account.questRewards.RemoveAt(index);
             DisplayQuestRewards();
         }
         public void RefreshButtons(int position)
