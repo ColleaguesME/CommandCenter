@@ -12,6 +12,13 @@ namespace CommandCenter
     [DataContract]
     public class QuestReward
     {
+        [DataMember]
+        string questName;
+        [DataMember]
+        string subquestNumber;
+
+
+
         public int index;
         public Village village;
         [DataMember]

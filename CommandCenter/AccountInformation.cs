@@ -35,13 +35,11 @@ namespace CommandCenter
         TcpListener tcpListener;
         public bool isClosed;
         public Socket socket;
-        MainWindow mainWindow;
 
         public DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AccountInformation));
 
-        public AccountInformation(string source, MainWindow mainWindow)
+        public AccountInformation(string source)
         {
-            this.mainWindow = mainWindow;
             buffer = new byte[65536];
             isClosed = true;
             string[] parameters = source.Split(' ');
@@ -60,11 +58,11 @@ namespace CommandCenter
             Action<Task<string>> callback = null;
             callback = result =>
             {
-                mainWindow.Dispatcher.Invoke(() =>
+                MainWindow.Current.Dispatcher.Invoke(() =>
                 {
                     if (result.IsCompleted)
                     {
-                        mainWindow.textBox.Text += result.Result + "\n";
+                        MainWindow.Current.textBox.Text += result.Result + "\n";
                     }
                 });
                 Thread.Sleep(100);
@@ -82,7 +80,7 @@ namespace CommandCenter
         }
         void GetVillage(IAsyncResult argument)
         {
-            mainWindow.Dispatcher.Invoke(() =>
+            MainWindow.Current.Dispatcher.Invoke(() =>
             {
                 int recieved = socket.EndReceive(argument);
                 if (recieved == 0)
@@ -124,12 +122,11 @@ namespace CommandCenter
                 {
 
                     Village village = new Village(recievedVillage, this);
-                    village.Bar.MouseDoubleClick += mainWindow.OpenTab;
-                    (mainWindow.stackPanelKach as IAddChild).AddChild(village.Bar);
+                    MainWindow.Current.stackPanelKach.Children.Add(village.Bar);
                     villages.Add(village);
                     try
                     {
-                        mainWindow.villagesOnMap.First((villageOnMap) =>
+                        MainWindow.Current.villagesOnMap.First((villageOnMap) =>
                         {
                             return villageOnMap.x == recievedVillage.x && villageOnMap.y == recievedVillage.y;
                         }).village = village;
@@ -161,6 +158,15 @@ namespace CommandCenter
                     
                 }
             }
+        }
+        public void ClaimReward(int index)
+        {
+            //rewrite
+            questRewards.RemoveAt(index);
+            villages.ForEach((village) =>
+            {
+                village.DisplayQuestRewards();
+            });
         }
 
         public override string ToString()

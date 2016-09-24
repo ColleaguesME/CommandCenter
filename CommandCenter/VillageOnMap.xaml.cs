@@ -41,7 +41,8 @@ namespace CommandCenter
 
         public int x, y;
         int points;
-        string name, player, province, tribe;
+        public string name { get; set;}
+        string player, province, tribe; 
         public Village village
         {
             get
@@ -54,13 +55,11 @@ namespace CommandCenter
                 label.Foreground = Brushes.Green;
             }
         }
-
-        MainWindow mainWindow;
+        
         UserControl mapMenu;
 
-        public VillageOnMap(MainWindow mainWindow, int x, int y, string name, string province, string player, string tribe, int points)
+        public VillageOnMap(int x, int y, string name, string province, string player, string tribe, int points)
         {
-            this.mainWindow = mainWindow;
             this.x = x;
             this.y = y;
             this.name = name;
@@ -85,17 +84,17 @@ namespace CommandCenter
 
         public void SetCoords()
         {
-            Canvas.SetLeft(this, (y%2 == 0 ? x : x + 0.5) * Size - mainWindow.currentX);
-            Canvas.SetTop(this, y * Size - mainWindow.currentY);
+            Canvas.SetLeft(this, (y%2 == 0 ? x : x + 0.5) * Size - MainWindow.Current.currentX);
+            Canvas.SetTop(this, y * Size - MainWindow.Current.currentY);
         }
         private void VillageOnMap_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (!mainWindow.moved)
+            if (!MainWindow.Current.moved)
             {
-                mainWindow.canvasMap.Children.Add(mapMenu);
-                Canvas.SetLeft(mapMenu, (y % 2 == 0 ? x : x + 0.5) * Size - mainWindow.currentX + Size);
-                Canvas.SetTop(mapMenu, y * Size - mainWindow.currentY + Size);
-                mainWindow.mapMenu = mapMenu;
+                MainWindow.Current.canvasMap.Children.Add(mapMenu);
+                Canvas.SetLeft(mapMenu, (y % 2 == 0 ? x : x + 0.5) * Size - MainWindow.Current.currentX + Size);
+                Canvas.SetTop(mapMenu, y * Size - MainWindow.Current.currentY + Size);
+                MainWindow.Current.mapMenu = mapMenu;
             }
         }
         private char GetCharIcon()

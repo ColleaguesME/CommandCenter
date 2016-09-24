@@ -40,6 +40,9 @@ namespace CommandCenter
         private void buttonAttack_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("attack!");
+            AttackTab attackTab = new AttackTab();
+            TabItem item = new TabItem();
+            item.Header = "Attack "+villageOnMap.name;
         }
     }
 }

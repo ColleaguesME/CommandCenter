@@ -21,14 +21,12 @@ namespace CommandCenter
     public partial class KachTab : UserControl
     {
         public Village Village;
-        public bool IsOpened;
         UIElementCollection orderElements;
         List<PositionPanel> positionPanels;
         PositionPanel selectedPosition;
         public KachTab(Village Village)
         {
             this.Village = Village;
-            IsOpened = false;
             InitializeComponent();
             orderElements = stackPanelOrders.Children;
             positionPanels = new List<PositionPanel>()

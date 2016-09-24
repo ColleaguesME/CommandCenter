@@ -31,7 +31,7 @@ namespace CommandCenter
 
         private void buttonClaim_Click(object sender, RoutedEventArgs e)
         {
-            village.ClaimReward(index);
+            //village.ClaimReward(index);
         }
     }
 }

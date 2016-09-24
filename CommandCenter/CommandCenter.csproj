@@ -101,6 +101,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccountInformation.cs" />
+    <Compile Include="Attack.cs" />
     <Compile Include="AttackBar.xaml.cs">
       <DependentUpon>AttackBar.xaml</DependentUpon>
     </Compile>
@@ -134,7 +135,7 @@
     <Compile Include="OrderBar.xaml.cs">
       <DependentUpon>OrderBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OrderChanges.cs" />
+    <Compile Include="OrderChange.cs" />
     <Compile Include="PartialBarracksInfo.cs" />
     <Compile Include="PartialFarmInfo.cs" />
     <Compile Include="PartialWaitInfo.cs" />
@@ -146,7 +147,6 @@
       <DependentUpon>QuestRewardBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources.cs" />
-    <Compile Include="Serializer.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Units\Archer.cs" />
     <Compile Include="Units\AxeFighter.cs" />

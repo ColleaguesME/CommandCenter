@@ -11,14 +11,19 @@ using System.Windows;
 using System.Windows.Controls;
 using CommandCenter.Buildings;
 using CommandCenter.Units;
+using System.Windows.Input;
 
 namespace CommandCenter
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DataContract]
     public class Village
     {
         public KachBar Bar;
-        public KachTab Tab;
+        public KachTab tab;
+        public TabItem tabItem;
         public AccountInformation account;
         [DataMember]
         string name;
@@ -44,10 +49,21 @@ namespace CommandCenter
         public Village(Village village, AccountInformation account)
         {
             this.account = account;
-            Tab = new KachTab(this);
-            Bar = new KachBar(Tab);
+            tab = new KachTab(this);
+
+            tabItem.Header = tab.Village.Name;
+            tabItem.KeyDown += MainWindow.Current.CloseTab;
+            tabItem.Content = tab;
+            Bar = new KachBar(tabItem);
+            village.Bar.MouseDoubleClick += OpenTab;
             name = village.name;
             Update(village);
+        }
+        public void OpenTab(object sender, RoutedEventArgs e)
+        {
+            TabItem tabItem = (sender as KachBar).tabItem;
+            MainWindow.Current.tabControl.Items.Add(tabItem);
+            MainWindow.Current.tabControl.SelectedIndex = MainWindow.Current.tabControl.Items.IndexOf(tabItem);
         }
         public void AddOrdersFromFile(string path)
         {
@@ -130,7 +146,7 @@ namespace CommandCenter
         }
         public void Update(Village toUpdate)
         {
-            Tab.buttonTakeSmallReward.IsEnabled = account.smallRewardQuantity > 0;
+            tab.buttonTakeSmallReward.IsEnabled = account.smallRewardQuantity > 0;
             
 
 
@@ -142,37 +158,37 @@ namespace CommandCenter
             order.provisions = provisions = Farm.GetSignificance(toUpdate.farm) - toUpdate.provisions;
             order.resources = resources = toUpdate.resources;
 
-            Tab.labelWood.Content = Bar.labelWood.Content = resources.Wood.ToString();
-            Tab.labelClay.Content = Bar.labelClay.Content = resources.Clay.ToString();
-            Tab.labelIron.Content = Bar.labelIron.Content = resources.Iron.ToString();
-            Tab.labelProvisions.Content = Bar.labelProvisions.Content = provisions.ToString() + '/' + Farm.GetSignificance(toUpdate.farm);
+            tab.labelWood.Content = Bar.labelWood.Content = resources.Wood.ToString();
+            tab.labelClay.Content = Bar.labelClay.Content = resources.Clay.ToString();
+            tab.labelIron.Content = Bar.labelIron.Content = resources.Iron.ToString();
+            tab.labelProvisions.Content = Bar.labelProvisions.Content = provisions.ToString() + '/' + Farm.GetSignificance(toUpdate.farm);
 
 
-            Tab.labelHeadquarters.Content = Bar.labelHeadquarters.Content = (order.headquarters.Level = headquarters = toUpdate.headquarters).ToString();
-            Tab.labelTimberCamp.Content = Bar.labelTimberCamp.Content = (order.timberCamp.Level = timberCamp = toUpdate.timberCamp).ToString();
-            Tab.labelClayPit.Content = Bar.labelClayPit.Content = (order.clayPit.Level = clayPit = toUpdate.clayPit).ToString();
-            Tab.labelIronMine.Content = Bar.labelIronMine.Content = (order.ironMine.Level = ironMine = toUpdate.ironMine).ToString();
-            Tab.labelFarm.Content = Bar.labelFarm.Content = (order.farm.Level = farm = toUpdate.farm).ToString();
-            Tab.labelWarehouse.Content = Bar.labelWarehouse.Content = (order.warehouse.Level = warehouse = toUpdate.warehouse).ToString();
-            Tab.labelRallyPoint.Content = (order.rallyPoint.Level = rallyPoint = toUpdate.rallyPoint).ToString();
-            Tab.labelBarracks.Content = Bar.labelBarracks.Content = (order.barracks.Level = barracks = toUpdate.barracks).ToString();
-            Tab.labelStatue.Content = (order.statue.Level = statue = toUpdate.statue).ToString();
-            Tab.labelWall.Content = Bar.labelWall.Content = (order.wall.Level = wall = toUpdate.wall).ToString();
-            Tab.labelHospital.Content = (order.hospital.Level = hospital = toUpdate.hospital).ToString();
-            Tab.labelMarket.Content = (order.market.Level = market = toUpdate.market).ToString();
-            Tab.labelTavern.Content = (order.tavern.Level = tavern = toUpdate.tavern).ToString();
-            Tab.labelAcademy.Content = (order.academy.Level = academy = toUpdate.tavern).ToString();
-            Tab.labelHallOfOrders.Content = (order.hallOfOrders.Level = hallOfOrders = toUpdate.hallOfOrders).ToString();
+            tab.labelHeadquarters.Content = Bar.labelHeadquarters.Content = (order.headquarters.Level = headquarters = toUpdate.headquarters).ToString();
+            tab.labelTimberCamp.Content = Bar.labelTimberCamp.Content = (order.timberCamp.Level = timberCamp = toUpdate.timberCamp).ToString();
+            tab.labelClayPit.Content = Bar.labelClayPit.Content = (order.clayPit.Level = clayPit = toUpdate.clayPit).ToString();
+            tab.labelIronMine.Content = Bar.labelIronMine.Content = (order.ironMine.Level = ironMine = toUpdate.ironMine).ToString();
+            tab.labelFarm.Content = Bar.labelFarm.Content = (order.farm.Level = farm = toUpdate.farm).ToString();
+            tab.labelWarehouse.Content = Bar.labelWarehouse.Content = (order.warehouse.Level = warehouse = toUpdate.warehouse).ToString();
+            tab.labelRallyPoint.Content = (order.rallyPoint.Level = rallyPoint = toUpdate.rallyPoint).ToString();
+            tab.labelBarracks.Content = Bar.labelBarracks.Content = (order.barracks.Level = barracks = toUpdate.barracks).ToString();
+            tab.labelStatue.Content = (order.statue.Level = statue = toUpdate.statue).ToString();
+            tab.labelWall.Content = Bar.labelWall.Content = (order.wall.Level = wall = toUpdate.wall).ToString();
+            tab.labelHospital.Content = (order.hospital.Level = hospital = toUpdate.hospital).ToString();
+            tab.labelMarket.Content = (order.market.Level = market = toUpdate.market).ToString();
+            tab.labelTavern.Content = (order.tavern.Level = tavern = toUpdate.tavern).ToString();
+            tab.labelAcademy.Content = (order.academy.Level = academy = toUpdate.tavern).ToString();
+            tab.labelHallOfOrders.Content = (order.hallOfOrders.Level = hallOfOrders = toUpdate.hallOfOrders).ToString();
 
-            Tab.labelSpearman.Content = Bar.labelSpearman.Content = (order.spearman.Quantity = spearman = toUpdate.spearman).ToString();
-            Tab.labelSwordsman.Content = Bar.labelSwordsman.Content = (order.swordsman.Quantity = swordsman = toUpdate.swordsman).ToString();
-            Tab.labelArcher.Content = Bar.labelArcher.Content = (order.archer.Quantity = archer = toUpdate.archer).ToString();
-            Tab.labelHeavyCavalry.Content = Bar.labelHeavyCavalry.Content = (order.heavyCavalry.Quantity = heavyCavalry = toUpdate.heavyCavalry).ToString();
-            Tab.labelAxeFighter.Content = Bar.labelAxeFighter.Content = (order.axeFighter.Quantity = axeFighter = toUpdate.axeFighter).ToString();
-            Tab.labelLightCavalry.Content = Bar.labelLightCavalry.Content = (order.lightCavalry.Quantity = lightCavalry = toUpdate.lightCavalry).ToString();
-            Tab.labelMountedArcher.Content = Bar.labelMountedArcher.Content = (order.mountedArcher.Quantity = mountedArcher = toUpdate.mountedArcher).ToString();
-            Tab.labelRam.Content = Bar.labelRam.Content = (order.ram.Quantity = ram = toUpdate.ram).ToString();
-            Tab.labelCatapult.Content = Bar.labelCatapult.Content = (order.catapult.Quantity = catapult = toUpdate.catapult).ToString();
+            tab.labelSpearman.Content = Bar.labelSpearman.Content = (order.spearman.Quantity = spearman = toUpdate.spearman).ToString();
+            tab.labelSwordsman.Content = Bar.labelSwordsman.Content = (order.swordsman.Quantity = swordsman = toUpdate.swordsman).ToString();
+            tab.labelArcher.Content = Bar.labelArcher.Content = (order.archer.Quantity = archer = toUpdate.archer).ToString();
+            tab.labelHeavyCavalry.Content = Bar.labelHeavyCavalry.Content = (order.heavyCavalry.Quantity = heavyCavalry = toUpdate.heavyCavalry).ToString();
+            tab.labelAxeFighter.Content = Bar.labelAxeFighter.Content = (order.axeFighter.Quantity = axeFighter = toUpdate.axeFighter).ToString();
+            tab.labelLightCavalry.Content = Bar.labelLightCavalry.Content = (order.lightCavalry.Quantity = lightCavalry = toUpdate.lightCavalry).ToString();
+            tab.labelMountedArcher.Content = Bar.labelMountedArcher.Content = (order.mountedArcher.Quantity = mountedArcher = toUpdate.mountedArcher).ToString();
+            tab.labelRam.Content = Bar.labelRam.Content = (order.ram.Quantity = ram = toUpdate.ram).ToString();
+            tab.labelCatapult.Content = Bar.labelCatapult.Content = (order.catapult.Quantity = catapult = toUpdate.catapult).ToString();
 
             order.barracksInfos.Add(new PartialBarracksInfo(DateTime.UtcNow, order.barracks.GetSignificance()));
             order.farmInfos.Add(new PartialFarmInfo(DateTime.UtcNow, order.farm.GetSignificance()));
@@ -213,85 +229,79 @@ namespace CommandCenter
         }
         public void DisplayOrders()
         {
-            Tab.SetOrderBars(orders);
-            Tab.Select(position);
+            tab.SetOrderBars(orders);
+            tab.Select(position);
         }
         public void DisplayQuestRewards()
         {
-            Tab.stackPanelQuestRewards.Children.RemoveRange(1, Tab.stackPanelQuestRewards.Children.Count - 1);
+            tab.stackPanelQuestRewards.Children.RemoveRange(1, tab.stackPanelQuestRewards.Children.Count - 1);
             for (int i = 0; i < (account.questRewards == null ? 0 : account.questRewards.Count); i++)
             {
                 account.questRewards[i].InitBar(i, this);
-                Tab.stackPanelQuestRewards.Children.Add(account.questRewards[i].bar);
+                tab.stackPanelQuestRewards.Children.Add(account.questRewards[i].bar);
             }
-        }
-        public void ClaimReward(int index)
-        {
-            //rewrite
-            account.questRewards.RemoveAt(index);
-            DisplayQuestRewards();
         }
         public void RefreshButtons(int position)
         {
             this.position = position;
             Order order = orders[position];
 
-            Tab.labelVirtualWood.Content = order.resources.Wood.ToString();
-            Tab.labelVirtualClay.Content = order.resources.Clay.ToString();
-            Tab.labelVirtualIron.Content = order.resources.Iron.ToString();
-            Tab.labelVirtualProvisions.Content = order.provisions.ToString() + '/' + Farm.GetSignificance(order.farm.Level);
+            tab.labelVirtualWood.Content = order.resources.Wood.ToString();
+            tab.labelVirtualClay.Content = order.resources.Clay.ToString();
+            tab.labelVirtualIron.Content = order.resources.Iron.ToString();
+            tab.labelVirtualProvisions.Content = order.provisions.ToString() + '/' + Farm.GetSignificance(order.farm.Level);
 
 
-            Tab.buttonHeadquarters.IsEnabled = order.IsHeadquartersAvailable();
+            tab.buttonHeadquarters.IsEnabled = order.IsHeadquartersAvailable();
 
-            Tab.buttonTimberCamp.IsEnabled = order.IsTimberCampAvailable();
+            tab.buttonTimberCamp.IsEnabled = order.IsTimberCampAvailable();
 
-            Tab.buttonClayPit.IsEnabled = order.IsClayPitAvailable();
+            tab.buttonClayPit.IsEnabled = order.IsClayPitAvailable();
 
-            Tab.buttonIronMine.IsEnabled = order.IsIronMineAvailable();
+            tab.buttonIronMine.IsEnabled = order.IsIronMineAvailable();
 
-            Tab.buttonFarm.IsEnabled = order.IsFarmAvailable();
+            tab.buttonFarm.IsEnabled = order.IsFarmAvailable();
 
-            Tab.buttonWarehouse.IsEnabled = order.IsWarehouseAvailable();
+            tab.buttonWarehouse.IsEnabled = order.IsWarehouseAvailable();
 
             //TODO church button
 
-            Tab.buttonRallyPoint.IsEnabled = order.IsRallyPointAvailable();
+            tab.buttonRallyPoint.IsEnabled = order.IsRallyPointAvailable();
 
-            Tab.buttonBarracks.IsEnabled = order.IsBarracksAvailable();
+            tab.buttonBarracks.IsEnabled = order.IsBarracksAvailable();
 
-            Tab.buttonStatue.IsEnabled = order.IsStatueAvailable();
+            tab.buttonStatue.IsEnabled = order.IsStatueAvailable();
 
-            Tab.buttonHospital.IsEnabled = order.IsHospitalAvailable();
+            tab.buttonHospital.IsEnabled = order.IsHospitalAvailable();
 
-            Tab.buttonWall.IsEnabled = order.IsWallAvailable();
+            tab.buttonWall.IsEnabled = order.IsWallAvailable();
 
-            Tab.buttonMarket.IsEnabled = order.IsMarketAvailable();
+            tab.buttonMarket.IsEnabled = order.IsMarketAvailable();
 
-            Tab.buttonTavern.IsEnabled = order.IsTavernAvailable();
+            tab.buttonTavern.IsEnabled = order.IsTavernAvailable();
 
-            Tab.buttonAcademy.IsEnabled = order.IsAcademyAvailable();
+            tab.buttonAcademy.IsEnabled = order.IsAcademyAvailable();
 
-            Tab.buttonHallOfOrders.IsEnabled = order.IsHallOfOrdersAvailable();
+            tab.buttonHallOfOrders.IsEnabled = order.IsHallOfOrdersAvailable();
 
 
-            Tab.buttonSpearman.IsEnabled = order.IsSpearmanAvailable();
+            tab.buttonSpearman.IsEnabled = order.IsSpearmanAvailable();
 
-            Tab.buttonSwordsman.IsEnabled = order.IsSwordsmanAvailable();
+            tab.buttonSwordsman.IsEnabled = order.IsSwordsmanAvailable();
 
-            Tab.buttonArcher.IsEnabled = order.IsArcherAvailable();
+            tab.buttonArcher.IsEnabled = order.IsArcherAvailable();
 
-            Tab.buttonHeavyCavalry.IsEnabled = order.IsHeavyCavalryAvailable();
+            tab.buttonHeavyCavalry.IsEnabled = order.IsHeavyCavalryAvailable();
 
-            Tab.buttonAxeFighter.IsEnabled = order.IsAxeFighterAvailable();
+            tab.buttonAxeFighter.IsEnabled = order.IsAxeFighterAvailable();
 
-            Tab.buttonLightCavalry.IsEnabled = order.IsLightCavalryAvailable();
+            tab.buttonLightCavalry.IsEnabled = order.IsLightCavalryAvailable();
 
-            Tab.buttonMountedArcher.IsEnabled = order.IsMountedArcherAvailable();
+            tab.buttonMountedArcher.IsEnabled = order.IsMountedArcherAvailable();
 
-            Tab.buttonRam.IsEnabled = order.IsRamAvailable();
+            tab.buttonRam.IsEnabled = order.IsRamAvailable();
 
-            Tab.buttonCatapult.IsEnabled = order.IsCatapultAvailable();
+            tab.buttonCatapult.IsEnabled = order.IsCatapultAvailable();
                 
 
         }

@@ -33,6 +33,7 @@ namespace CommandCenter
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Current;
         public List<AccountInformation> accounts;
         public List<VillageOnMap> villagesOnMap;
         public double currentX, currentY;
@@ -45,6 +46,7 @@ namespace CommandCenter
 
         public MainWindow()
         {
+            Current = this;
             mySqlConnection = new MySqlConnection("server=127.0.0.1;uid=root;pwd=pavellev7;database=db;");
             mySqlConnection.Open();
             InitializeComponent();
@@ -65,7 +67,7 @@ namespace CommandCenter
             mySqlDataReader = mySqlCommand.ExecuteReader();
             while (mySqlDataReader.Read())
             {
-                VillageOnMap villageOnMap = new VillageOnMap(this, mySqlDataReader.GetInt32(0), mySqlDataReader.GetInt32(1),
+                VillageOnMap villageOnMap = new VillageOnMap(mySqlDataReader.GetInt32(0), mySqlDataReader.GetInt32(1),
                     mySqlDataReader.GetString(2), mySqlDataReader.GetString(3), mySqlDataReader.GetString(4),
                     mySqlDataReader.GetString(5), mySqlDataReader.GetInt32(6));
                 villagesOnMap.Add(villageOnMap);
@@ -104,30 +106,15 @@ namespace CommandCenter
             string[] lines = System.IO.File.ReadAllLines(textBoxPath.Text);
             foreach (string line in lines)
             {
-                accounts.Add(new AccountInformation(line, this));
+                accounts.Add(new AccountInformation(line));
             }
             tabControl.SelectedIndex = 3;
             tabControl.Items.Remove(tabItemStart);
         }
-        public void OpenTab(object sender, RoutedEventArgs e)
+        public void CloseTab(object sender, KeyEventArgs e)
         {
-            KachTab tab = (sender as KachBar).Tab;
-            if(!tab.IsOpened)
+            if (Keyboard.IsKeyDown(Key.W) && ((Keyboard.Modifiers & ModifierKeys.Control) > 0))
             {
-                tab.IsOpened = true;
-                TabItem item = new TabItem();
-                item.Header = tab.Village.Name;
-                item.KeyDown += CloseTab;
-                (item as IAddChild).AddChild(tab);
-                (tabControl as IAddChild).AddChild(item);
-            }
-            Dispatcher.BeginInvoke((Action)(() => tabControl.SelectedIndex = tabControl.Items.IndexOf(tab.Parent)));
-        }
-        private void CloseTab(object sender, KeyEventArgs e)
-        {
-            if(Keyboard.IsKeyDown(Key.W) && ((Keyboard.Modifiers & ModifierKeys.Control) > 0))
-            {
-                ((sender as TabItem).Content as KachTab).IsOpened = false;
                 tabControl.Items.Remove(sender);
             }
         }

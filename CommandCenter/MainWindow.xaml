@@ -28,12 +28,12 @@
                     <Button x:Name="buttonGo" Content="Go" Canvas.Top="680" Width="39" Height="20" Canvas.Left="44" Click="buttonGo_Click" Panel.ZIndex="1"/>
                 </Canvas>
             </TabItem>
-            <TabItem Header="Kill" Width="100">
+            <TabItem Header="Kill" Width="100" Height="22" Margin="0,-2,0,0" VerticalAlignment="Top">
                 <Grid>
                     <TextBox x:Name="textBox" Width="500"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItemKach" Header="Kach" Width="100">
+            <TabItem x:Name="tabItemKach" Header="Kach" Width="100" Height="24" Margin="0,-2,0,0" VerticalAlignment="Top">
                 <StackPanel x:Name="stackPanelKach">
                 </StackPanel>
             </TabItem>

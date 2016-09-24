@@ -20,14 +20,14 @@ namespace CommandCenter
     /// </summary>
     public partial class KachBar : UserControl
     {
-        public KachTab Tab;
+        public TabItem tabItem;
         public KachBar()
         {
             InitializeComponent();
         }
-        public KachBar(KachTab Tab)
+        public KachBar(TabItem tabItem)
         {
-            this.Tab = Tab;
+            this.tabItem = tabItem;
             InitializeComponent();
         }
     }
