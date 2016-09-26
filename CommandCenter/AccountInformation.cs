@@ -37,7 +37,10 @@ namespace CommandCenter
         public Socket socket;
 
         public DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AccountInformation));
-
+        /// <summary>
+        /// qwe
+        /// </summary>
+        /// <param name="source"></param>
         public AccountInformation(string source)
         {
             buffer = new byte[65536];
@@ -137,27 +140,6 @@ namespace CommandCenter
                     }
                 }
             });
-
-            
-
-            foreach (Village recievedVillage in source.villages)
-            {
-                bool found = false;
-                foreach (Village village in villages)
-                {
-                    if (village.x == recievedVillage.x && village.y == recievedVillage.y)
-                    {
-                        found = true;
-                        village.Update(recievedVillage);
-                        break;
-                    }
-                }
-                if (!found)
-                {
-
-                    
-                }
-            }
         }
         public void ClaimReward(int index)
         {
