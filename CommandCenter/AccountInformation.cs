@@ -26,6 +26,7 @@ namespace CommandCenter
         [DataMember]
         public int smallRewardQuantity;
 
+        
         static int lastUnusedPort = 8000;
         const string cookiesPath = "";
         public static string myIp;
@@ -34,7 +35,8 @@ namespace CommandCenter
         string name, password;
         TcpListener tcpListener;
         public bool isClosed;
-        public Socket socket;
+        public NetworkStream networkStream;
+        public List<byte> recievedBuffer;
 
         public DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AccountInformation));
         /// <summary>
@@ -77,20 +79,22 @@ namespace CommandCenter
         }
         void EndAcceptSocket(IAsyncResult argument)
         {
-            socket = tcpListener.EndAcceptSocket(argument);
+            networkStream = new NetworkStream(tcpListener.EndAcceptSocket(argument));
             isClosed = false;
-            socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, GetVillage, null);
+            networkStream.BeginRead(buffer, 0, buffer.Length, GetVillage, null);
+
         }
         void GetVillage(IAsyncResult argument)
         {
             MainWindow.Current.Dispatcher.Invoke(() =>
             {
-                int recieved = socket.EndReceive(argument);
+                int recieved = networkStream.EndRead(argument);
+
                 if (recieved == 0)
                 {
                     int oldPort = (tcpListener.LocalEndpoint as IPEndPoint).Port;
                     isClosed = true;
-                    socket.Close();
+                    networkStream.Close();
                     tcpListener.Stop();
                     MessageBox.Show("Closed connection");
                     tcpListener = new TcpListener(IPAddress.Any, oldPort);
@@ -99,11 +103,18 @@ namespace CommandCenter
                 }
                 else
                 {
-                    string str = Encoding.UTF8.GetString(buffer);
-                    MemoryStream stream = new MemoryStream(buffer, 0, recieved);
-                    Update((AccountInformation)serializer.ReadObject(stream));
-                    socket.BeginReceive(buffer, 0, buffer.Length, SocketFlags.None, GetVillage, null);
+                    Enumerable.Concat(recievedBuffer, buffer);
+                    int res = Array.IndexOf<byte>(buffer, 0x7d);
+                    if (res != -1)
+                    {
+                        MemoryStream ms = new MemoryStream(recievedBuffer.GetRange(0, res + 1).ToArray());
+                        Update((AccountInformation)serializer.ReadObject(networkStream));
+                        recievedBuffer.RemoveRange(0, res + 1);
+                    }
+                    networkStream.BeginRead(buffer, 0, buffer.Length, GetVillage, null);
+                 
                 }
+                    
             });
         }
 

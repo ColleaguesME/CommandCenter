@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -25,11 +26,9 @@ namespace CommandCenter
             this.type = type;
             this.changedOrders = changedOrders;
         }
-        public byte[] GetBytes()
+        public void WriteToStream(NetworkStream networkStream)
         {
-            MemoryStream stream = new MemoryStream();
-            serializer.WriteObject(stream, this);
-            return stream.ToArray();
+            serializer.WriteObject(networkStream, this);
 
         }
     }

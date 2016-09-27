@@ -96,7 +96,7 @@ namespace CommandCenter
                 orders.AddRange(orders[orders.Count - 1].StringToOrders(toHandle[i]));
             }
             
-            account.socket.Send(new OrderChange(position - 1, "add", orders.GetRange(position, orders.Count - position)).GetBytes());
+            (new OrderChange(position - 1, "add", orders.GetRange(position, orders.Count - position))).WriteToStream(account.networkStream);
             DisplayOrders();
         }
         public void RemoveAllOrders()
@@ -135,7 +135,7 @@ namespace CommandCenter
                     position--;
                 }
 
-                account.socket.Send(new OrderChange(toRemove - 1, "cancel", orders.GetRange(toRemove, orders.Count - toRemove)).GetBytes());
+                (new OrderChange(toRemove - 1, "cancel", orders.GetRange(toRemove, orders.Count - toRemove))).WriteToStream(account.networkStream);
 
                 DisplayOrders();
             }

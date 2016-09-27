@@ -106,13 +106,13 @@ namespace CommandCenter
         private void buttonRefresh_Click(object sender, RoutedEventArgs e)
         {
             byte[] message = Encoding.UTF8.GetBytes("{\"type\": \"refresh\"}");
-            Village.account.socket.Send(message);
+            Village.account.networkStream.Write(message,0,message.Length);
         }
 
         private void buttonTakeSmallReward_Click(object sender, RoutedEventArgs e)
         {
             byte[] message = Encoding.UTF8.GetBytes("Take Small Reward");
-            Village.account.socket.Send(message);
+            Village.account.networkStream.Write(message, 0, message.Length);
         }
 
         private void buttonRemoveOrders_Click(object sender, RoutedEventArgs e)
