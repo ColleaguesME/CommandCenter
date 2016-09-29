@@ -16,6 +16,8 @@ namespace CommandCenter
         static DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Attack));
 
         [DataMember]
+        double time;
+        [DataMember]
         string type;
 
         [DataMember]

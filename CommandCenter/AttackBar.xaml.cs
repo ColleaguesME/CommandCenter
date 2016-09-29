@@ -24,6 +24,8 @@ namespace CommandCenter
         {
 
             InitializeComponent();
+            
+
         }
     }
 }

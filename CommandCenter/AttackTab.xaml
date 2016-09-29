@@ -7,12 +7,62 @@
              mc:Ignorable="d" 
              d:DesignHeight="709" d:DesignWidth="1010">
     <StackPanel>
-        <local:AttackBar/>
-        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0"/>
-        <local:AttackBar/>
-        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0"/>
-        <local:AttackBar/>
-        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0"/>
-        <local:AttackBar/>
+        <StackPanel Orientation="Horizontal">
+            <Border x:Name="borderSpearman" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="190,0,44,0">
+                <Image Source="images/spearman.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderSwordsman" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,50,0">
+                <Image Source="images/swordsman.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderArcher" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,40,0">
+                <Image Source="images/archer.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderHeavyCavalry" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,40,0">
+                <Image Source="images/Heavy_cavalry.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderAxeFighter" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,40,0">
+                <Image Source="images/Axe_fighter.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderLightCavalry" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,35,0">
+                <Image Source="images/Light_cavalry.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderMountedArcher" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,35,0">
+                <Image Source="images/Mounted_archer.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderRam" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,35,0">
+                <Image Source="images/ram.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderCatapult" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,30,0">
+                <Image Source="images/catapult.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderBerserker" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,35,0">
+                <Image Source="images/Berserker.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderTrebuchet" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,30,0">
+                <Image Source="images/Trebuchet.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderNobleman" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,12,0">
+                <Image Source="images/nobleman.png"  Height="28"/>
+            </Border>
+            <Border x:Name="borderPaladin" MouseUp="toggleUnits" BorderThickness="1" BorderBrush="Blue" Margin="0,0,0,0">
+                <Image Source="images/paladin.png"  Height="28"/>
+            </Border>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <StackPanel x:Name="stackPanelAttackBars">
+                <local:AttackBar/>
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0"/>
+                <local:AttackBar/>
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0"/>
+                <local:AttackBar/>
+                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0"/>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Input date and time:" Margin="500,0,0,0"/>
+            <TextBox x:Name="textBoxDesiredTime" BorderThickness="2" BorderBrush="Gray"  TextChanged="changeToNormalState" Width="200" Margin="10,0,0,0"/>
+            <Button MouseUp="Calculate" Content="Calculate" Margin="10,0,0,0" />
+            <Button x:Name="buttonSendArmy" MouseUp="sendArmy" Content="Send army" Margin="10,0,0,0"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

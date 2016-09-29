@@ -408,6 +408,8 @@
     <Resource Include="images\A.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\Berserker.png" />
+    <Resource Include="images\Trebuchet.png" />
     <Content Include="makeConnection.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

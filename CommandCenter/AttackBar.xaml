@@ -33,13 +33,13 @@
         <Label x:Name="labelRam" Content="4800" Height="18" Padding="2,1" Width="30"/>
         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
         <TextBox x:Name="textBoxCatapult" Text="3000" Height="18" Width="31"/>
-        <Label x:Name="labelCarapult" Content="3000" Height="18" Padding="2,1" Width="30"/>
+        <Label x:Name="labelCatapult" Content="3000" Height="18" Padding="2,1" Width="30"/>
         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
         <TextBox x:Name="textBoxBerserker" Text="4000" Height="18" Width="31"/>
         <Label x:Name="labelBerserker" Content="4000" Height="18" Padding="2,1" Width="30"/>
         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
-        <TextBox x:Name="textBoxTrebushet" Text="2400" Height="18" Width="31"/>
-        <Label x:Name="labelTrebushet" Content="2400" Height="18" Padding="2,1" Width="30"/>
+        <TextBox x:Name="textBoxTrebuchet" Text="2400" Height="18" Width="31"/>
+        <Label x:Name="labelTrebuchet" Content="2400" Height="18" Padding="2,1" Width="30"/>
         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="0,0,2,0"/>
         <TextBox x:Name="textBoxNobleman" Text="240" Height="18" Width="25"/>
         <Label x:Name="labelNobleman" Content="240" Height="18" Padding="2,1" Width="23"/>
